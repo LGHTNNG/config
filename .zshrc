@@ -1,0 +1,206 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time Oh My Zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="spaceship"
+
+### MYMODS
+echo "CHECKOUT stockflow-symfony, dialog";
+echo "\nAgent skills: https://github.com/mattpocock/skills\n";
+echo "people githubs: shamisen-cat, ahmed-bhs, kyc-factories";
+echo "USE: graphify, zed, YAZI, als, cht.sh, tldr, git + gh + tig + lazygit, lazydocker, dtop, ctrl+shift+P\n";
+echo "NOT TO FORGET: symfonyCasts directory, phpstormProjects directory, bookmarks(symfony php tools front boil symfony bundles packages)\n";
+echo "DOCS TO CHECK: docs.lnav.org/en/v0.13.1/usage.html \n";
+echo "SOFTWARE TO USE: lnav, gh-dash.dev\n";
+echo "LINKS PATHS: PhpstormProjects/symfonyCasts/links.txt\n";
+echo "USE THESE DOTFILES: github.com/dlvhdr/dotfiles\n";
+echo "TO CHECK GHOSTTY HOTKEYS: /usr/bin/ghostty +list-keybinds --default\n";
+echo "CHECK BOOKMARKS, PINNED TABS: AccountEnabledUserChecker, Add user roles to the response body, Passwordless Login Link Authentication, doctrine hidden features, folder_names(!s)\n";
+echo "\n git workflow: https://gnugat.github.io/2025/08/20/my-git-workflow.html\n";
+### Until ncurses < 6.5 use
+TERM=xterm-256color
+
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/home/mateusz/.config/composer/vendor/bin:$PATH"
+export PATH="$HOME/.symfony5/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+#zstyle ':completion:*:*:docker:*' option-stacking yes
+#zstyle ':completion:*:*:docker-*:*' option-stacking yes
+# HISTORY
+SAVEHIST=9000000
+HISTSIZE=9999999                # set HISTSIZE > SAVEHIST
+
+EDITOR=nano
+setopt EXTENDED_HISTORY         # include timestamp
+setopt HIST_BEEP                # beep if attempting to access a history entry which isn’t there
+setopt HIST_EXPIRE_DUPS_FIRST   # trim dupes first if history is full
+setopt HIST_FIND_NO_DUPS        # do not display previously found command
+setopt HIST_IGNORE_DUPS         # do not save duplicate of prior command
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE        # do not save if line starts with space
+setopt HIST_NO_STORE            # do not save history commands
+setopt HIST_REDUCE_BLANKS       # strip superfluous blanks
+setopt INC_APPEND_HISTORY       # don’t wait for shell to exit to save history lines
+
+# ============================================================
+#  Cheatsheet (run `cheat` or `?` to show again)
+# ============================================================
+cheat() {
+  local b=$'\e[1m' c=$'\e[36m' g=$'\e[32m' d=$'\e[2m' r=$'\e[0m'
+  print -r -- "${b}${c}  SHORTCUTS${r}  ${d}(cheat to show again)${r}"
+  print -r -- "${d}  ─────────────────────────────────────────────${r}"
+  print -r -- "  ${g}Ctrl+R${r}      fuzzy history search        ${d}(fzf)${r}"
+  print -r -- "  ${g}Ctrl+T${r}      fuzzy file picker           ${d}(fzf)${r}"
+  print -r -- "  ${g}Alt+C${r}       fuzzy cd into subdir        ${d}(fzf)${r}"
+  print -r -- "  ${g}prefix + UP${r} history match by prefix"
+  print -r -- "  ${g}Esc Esc${r}     prepend sudo to last cmd"
+  print -r -- "  ${g}Alt+arrows${r}  navigate dir history"
+  print -r -- ""
+  print -r -- "  ${g}z <dir>${r}     jump to frequent dir        ${d}(zoxide)${r}"
+  print -r -- "  ${g}zi${r}          interactive dir jump"
+  print -r -- "  ${g}ll / la${r}     list long / +hidden         ${d}(eza, git)${r}"
+  print -r -- "  ${g}lt${r}          tree view (2 levels)"
+  print -r -- "  ${g}cat${r}         syntax-colored cat          ${d}(bat)${r}"
+  print -r -- "  ${g}fd <pat>${r}    fast file find"
+  print -r -- "  ${g}ctrl+shift+P${r}    Runner"
+  print -r -- "  ${g}rg <pat>${r}    fast grep"
+  print -r -- "  ${g}extract f${r}   unpack any archive"
+  print -r -- "  ${g}cheat${r} / ${g}?${r}     show this list"
+  print -r -- "${d}  ─────────────────────────────────────────────${r}"
+}
+alias '?'='cheat'
+
+# Auto-show on new interactive shell (skip in subshells / over SSH scripts)
+if [[ -o interactive && -z "$CLAUDECODE" ]]; then
+  command -v fastfetch >/dev/null 2>&1 && fastfetch
+  cheat
+fi
+
+# ============================================================
+#  Limits
+# ============================================================
+ulimit -n 4096
+# setopt HIST_ALLOW_CLOBBER       # related to shell clobber setting
+# setopt HIST_IGNORE_ALL_DUPS     # remove old event if new one is a duplicate
+# setopt HIST_LEX_WORDS           # related to how white space is saved
+# setopt HIST_NO_FUNCTIONS        # do not save function commands
+# setopt HIST_SAVE_NO_DUPS        # omit older duplicates of newer commands
+# setopt HIST_SUBST_PATTERN       # use pattern matching for substitutions
+# setopt HIST_VERIFY              # expand command line without executing it
+
+### PAGER
+export PAGER="lnav -q";
+### ENDMYMODS
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(tldr starship git alias-finder aliases ufw systemadmin fzf colored-man-pages zsh-history-substring-search systemadmin ubuntu
+ zsh-completions zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete symfony docker docker-compose eza)
+zstyle ':omz:plugins:alias-finder' autoload yes # disabled by default
+zstyle ':omz:plugins:alias-finder' longer yes # disabled by default
+zstyle ':omz:plugins:alias-finder' exact yes # disabled by default
+zstyle ':omz:plugins:alias-finder' cheaper yes # disabled by default
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='nvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch $(uname -m)"
+
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+. "$HOME/.cargo/env"
+
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+# opencode
+export PATH=/home/mateusz/.opencode/bin:$PATH
